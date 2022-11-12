@@ -73,7 +73,7 @@ const OptionsLocationScreen = ({ navigation }) => {
             :
             options.map((opcion) => {
                 return (
-                    <OptionCity id={opcion.lon + " " + opcion.lat} city={opcion.city} country={opcion.country} navigation={navigation} />
+                    <OptionCity id={opcion.lon + " " + opcion.lat} city={opcion.city} country={opcion.country}  navigation={navigation}/>
                 )
             })
         }

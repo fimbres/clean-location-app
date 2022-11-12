@@ -7,7 +7,7 @@ function BottomTab({ currentRouteName, navigationRef }) {
 
   LogBox.ignoreAllLogs(true)
 
-  console.log(currentRouteName);
+  // console.log(currentRouteName);
   return (
     <>
       <View style={styles.container}>

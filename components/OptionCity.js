@@ -1,14 +1,23 @@
 
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const OptionCity = ({id,city,country,navigation}) => {
-    
+const OptionCity = ({id,city,country}) => {
+    const navigate = useNavigation()
     const selectView = e => {
-        navigation.push('SeeLocation')
+        navigate.navigate({
+            key: 'SeeLocation',
+            name: 'SeeLocation',
+            params: {
+                city: city,
+                country: country
+            }
+        })
+
     }
     return (
-        <View style={styles.container} onTouchEnd={selectView} >
+        <View style={styles.container}  onTouchStart={selectView} >
             <Text style={styles.city}>{city}</Text>
             <Text style={styles.country}>{country}</Text>
         </View>
