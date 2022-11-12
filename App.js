@@ -2,6 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from './screens/HomeScreen';
+import CompareLocationsScreen from './screens/CompareLocations';
+import SearchLocationScreen from './screens/SearchLocationScreen';
+import SeeLocationScreen from './screens/SeeLocationScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
@@ -10,19 +19,16 @@ export default function App() {
   });
 
   return (
-    <View style={styles.container}>
-      <Ionicons name="home" size={32} color="black" />
-      <Text style={{ fontFamily: 'VarelaRound-Regular', fontSize:16}}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="CompareLocations" component={CompareLocationsScreen} />
+          <Stack.Screen name="SearchLocation" component={SearchLocationScreen} />
+          <Stack.Screen name="SeeLocation" component={SeeLocationScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
