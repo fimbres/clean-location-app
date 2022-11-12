@@ -1,4 +1,4 @@
-const colors = [
+export const colors = [
   {
     StrongGreen: "#395144",
   },
@@ -12,5 +12,3 @@ const colors = [
     LightBlack: "#3E3939",
   }
 ];
-
-console.log(JSON.stringify(colors));
