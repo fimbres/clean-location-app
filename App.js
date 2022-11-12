@@ -6,10 +6,13 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 
-import HomeScreen from "./screens/HomeScreen";
-import CompareLocationsScreen from "./screens/CompareLocations";
-import SearchLocationScreen from "./screens/SearchLocationScreen";
-import SeeLocationScreen from "./screens/SeeLocationScreen";
+import HomeScreen from './screens/HomeScreen';
+import CompareLocationsScreen from './screens/CompareLocations';
+import SearchLocationScreen from './screens/SearchLocationScreen';
+import SeeLocationScreen from './screens/SeeLocationScreen';
+import OptionsLocationScreen from './screens/OptionsLocationScreen';
+import LocationDetails from './screens/LocationDetails';
+
 const Stack = createNativeStackNavigator();
 import BottomTab from './components/BottomTab'
 import {useState} from 'react'
