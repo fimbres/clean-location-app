@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import OptionCity from '../components/OptionCity';
+import Travel from '../assets/travelers.png';
 const OptionsLocationScreen = ({ navigation }) => {
     const [focus, setFocus] = useState(false)
     const [text,onChangeText] = useState("");
-    // const [options, setOptions] = useState(false);
+    const [options, setOptions] = useState(false);
     const styles_inpt = StyleSheet.create({
         input: {
             fontSize: 20,
@@ -19,33 +20,57 @@ const OptionsLocationScreen = ({ navigation }) => {
             
         }
     })
-    // const changeInpt = (e) => {
-    //     onChangeText(e.valueOf());
-
-    // }
+    const changeInpt = (e) => {
+        onChangeText(e.valueOf());
+        fetch('https://api.geoapify.com/v1/geocode/search?city='+e.valueOf() +'&type=city&format=json&apiKey=32bd4e25f7ee4f78804fcb071ef00171&limit=5')
+        .then((res) => res.json())
+        .then( (res) => {
+            if(res.results){
+                // let opciones = []
+                // res.results.map(direccion => {
+                //     if(opciones){
+                //         let repetido = false
+                //         opciones.map(op => {
+                //             if(op.city == direccion.city && op.country == direccion.country)
+                //                 repetido = true
+                //         })
+                //         if(!repetido)
+                //             opciones.push(direccion)
+                //     }
+                // })
+                setOptions(res.results)
+            }
+            else 
+                setOptions(false)
+        })
+        .catch(err => {
+            console.log('HUBO UN ERROR');
+        })
+    }
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Where do yo want to travel?</Text>
         <TextInput
         style={styles_inpt.input}
-        // onChangeText={changeInpt}
+        onChangeText={changeInpt}
         selectionColor="#31905D"
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         value={text}
         ></TextInput>
-        {/* {
-            text == "" ?
-            <Image styles={styles.image} source={{uri: '../assets/icon.png',}}>
-            </Image>
+        {
+            text == "" || !options ?
+            <Image styles={styles.image} source={Travel}/>
             :
+            options.map((opcion) => {
+                return (
+                    <OptionCity id={opcion.lon + " " + opcion.lat} city={opcion.city} country={opcion.country} navigation={navigation}>
 
+                    </OptionCity>
+                )
+            })
             
-        } */}
-        <OptionCity city="Ensenada" country="Mexico" navigation={navigation}>
-        </OptionCity>
-        <OptionCity city="Tijuana" country="Mexico" navigation={navigation}>
-        </OptionCity>
+        }
     </View>
   )
 }
@@ -65,4 +90,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#ffffff"
     },
+    image: {
+        width: 100,
+        height: 100,
+    }
 });

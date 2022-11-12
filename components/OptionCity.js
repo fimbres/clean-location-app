@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const OptionCity = ({city,country,navigation}) => {
+const OptionCity = ({id,city,country,navigation}) => {
     
     const selectView = e => {
         navigation.push('LocationDetails')
