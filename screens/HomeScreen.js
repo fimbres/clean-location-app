@@ -3,47 +3,37 @@ import { View, StyleSheet } from 'react-native';
 import { Marker } from 'react-native-maps';
 
 import Map from '../components/Map';
+import Countries from '../data/country_pullution.json';
 import DangerDot from '../assets/danger-dot.png';
 import SecureDot from '../assets/secure-dot.png';
 import WarningDot from '../assets/warning-dot.png';
 
 const HomeScreen = ({ navigation }) => {
-    const sampleSiteMarkers = [
-        {
-            coordinate: {
-                longitude: -106.391015,
-                latitude: 39.085855
-            }
-        },
-        {
-            coordinate: {
-                longitude: -106.368051,
-                latitude: 39.351661
-            }
-        },
-        {
-            coordinate: {
-                longitude: -106.389204,
-                latitude: 39.372171
-            }
-        }
-    ];
-
-  return (
-    <View style={styles.container}>
-      <Map>
-        {sampleSiteMarkers.map((marker, index) => {
+    const renderMarkers = () => 
+        Countries.map(country => {
+            const pollutionIndex = Number(country["Pollution"]);
+            const coordinate = {
+                longitude: Number(country["Longitude"]),
+                latitude: Number(country["Latitude"]),
+            };
+            
             return (
                 <Marker 
-                    key={index}
-                    coordinate={marker.coordinate}
-                    image={DangerDot}
+                    key={country["ID"]}
+                    coordinate={coordinate}
+                    image={pollutionIndex < 1 ? SecureDot : pollutionIndex > 1 && pollutionIndex < 4 ? WarningDot : DangerDot}
                 />
             );
-        })}
-      </Map>
-    </View>
-  )
+        }
+    );
+
+    return (
+        <View style={styles.container}>
+            <Map>
+                {renderMarkers()}
+            </Map>
+        </View>
+    )
 }
 
 export default HomeScreen;

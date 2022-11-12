@@ -22,10 +22,11 @@ export default function App() {
   const navigationRef = useNavigationContainerRef();
   let routeNameRef;
   const [routeName, setRouteName] = useState('');
+  const options = { headerTintColor: 'white', headerStyle: { backgroundColor: '#2C2727' } };
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer
         ref={navigationRef}
         onReady={() => {
@@ -50,17 +51,19 @@ export default function App() {
         }}
       >
         
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Navigator initialRouteName="Home" >
+          <Stack.Screen name="Home" component={HomeScreen} options={options}/>
           <Stack.Screen
             name="CompareLocations"
             component={CompareLocationsScreen}
+            options={options}
           />
           <Stack.Screen
             name="SearchLocation"
             component={SearchLocationScreen}
+            options={options}
           />
-          <Stack.Screen name="SeeLocation" component={SeeLocationScreen} />
+          <Stack.Screen name="SeeLocation" component={SeeLocationScreen} options={options} />
         </Stack.Navigator>
         <BottomTab  currentRouteName={routeName} navigationRef={navigationRef}/>
       </NavigationContainer>
