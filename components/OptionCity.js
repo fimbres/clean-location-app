@@ -2,17 +2,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const OptionCity = ({city,country}) => {
+const OptionCity = ({city,country,navigation}) => {
     
-  return (
-    <View title='' style={styles.container}>
-        <Text style={styles.city}>{city}</Text>
-        <Text style={styles.country}>{country}</Text>
-    </View>
-  )
+    const selectView = e => {
+        navigation.push('LocationDetails')
+    }
+    return (
+        <View style={styles.container} onTouchEnd={selectView} >
+            <Text style={styles.city}>{city}</Text>
+            <Text style={styles.country}>{country}</Text>
+        </View>
+    )
 }
 
 export default OptionCity;
+
 
 const styles = StyleSheet.create({
     container: {

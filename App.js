@@ -8,6 +8,7 @@ import CompareLocationsScreen from './screens/CompareLocations';
 import SearchLocationScreen from './screens/SearchLocationScreen';
 import SeeLocationScreen from './screens/SeeLocationScreen';
 import OptionsLocationScreen from './screens/OptionsLocationScreen';
+import LocationDetails from './screens/LocationDetails'
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
           <Stack.Screen name="SearchLocation" component={SearchLocationScreen} />
           <Stack.Screen name="SeeLocation" component={SeeLocationScreen} />
           <Stack.Screen name="OptionsLocation" component={OptionsLocationScreen} />
+          <Stack.Screen name='LocationDetails' component={LocationDetails}/>
         </Stack.Navigator>
       </NavigationContainer>
     </>
