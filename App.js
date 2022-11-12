@@ -54,7 +54,7 @@ export default function App() {
         }}
       >
         
-        <Stack.Navigator initialRouteName="CompareLocations" >
+        <Stack.Navigator initialRouteName="SeeLocation" >
           <Stack.Screen name="Home" component={HomeScreen} options={options}/>
           <Stack.Screen
             name="CompareLocations"
@@ -66,7 +66,7 @@ export default function App() {
             component={SearchLocationScreen}
             options={options}
           />
-          <Stack.Screen name="SeeLocation" component={SeeLocationScreen} options={options} />
+          <Stack.Screen name="SeeLocation" component={SeeLocationScreen} options={options} valorEstrella={4}/>
         </Stack.Navigator>
         <BottomTab  currentRouteName={routeName} navigationRef={navigationRef}/>
       </NavigationContainer>
