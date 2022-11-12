@@ -8,10 +8,8 @@ import { useFonts } from "expo-font";
 
 import HomeScreen from './screens/HomeScreen';
 import CompareLocationsScreen from './screens/CompareLocations';
-import SearchLocationScreen from './screens/SearchLocationScreen';
 import SeeLocationScreen from './screens/SeeLocationScreen';
 import OptionsLocationScreen from './screens/OptionsLocationScreen';
-import LocationDetails from './screens/LocationDetails';
 
 const Stack = createNativeStackNavigator();
 import BottomTab from './components/BottomTab'
@@ -34,7 +32,7 @@ export default function App() {
         ref={navigationRef}
         onReady={() => {
           routeNameRef = navigationRef.getCurrentRoute().name;
-          console.log(routeNameRef);
+          // console.log(routeNameRef);
           setRouteName(routeNameRef);
         }}
         onStateChange={async () => {
@@ -54,7 +52,7 @@ export default function App() {
         }}
       >
         
-        <Stack.Navigator initialRouteName="SeeLocation" >
+        <Stack.Navigator initialRouteName="Home" >
           <Stack.Screen name="Home" component={HomeScreen} options={options}/>
           <Stack.Screen
             name="CompareLocations"
@@ -63,7 +61,7 @@ export default function App() {
           />
           <Stack.Screen
             name="SearchLocation"
-            component={SearchLocationScreen}
+            component={OptionsLocationScreen}
             options={options}
           />
           <Stack.Screen name="SeeLocation" component={SeeLocationScreen} options={options} valorEstrella={4}/>
