@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
 const OptionCity = ({city,country}) => {
     
   return (
-    <View style={styles.container}>
-        <Text>{city}</Text>
-        <Text>{country}</Text>
+    <View title='' style={styles.container}>
+        <Text style={styles.city}>{city}</Text>
+        <Text style={styles.country}>{country}</Text>
     </View>
   )
 }
@@ -16,26 +16,20 @@ export default OptionCity;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        margin: 20,
-        padding: 20,
+        marginHorizontal: 20,
+        marginTop: 10,
+        marginBottom: 10,
+        padding: 15,
         backgroundColor: "#2C2727",
+    },
+    city: {
+        fontSize: 20,
+        fontWeight: "bold",
         color: "#ffffff"
+
     },
-    title: {
-        marginTop: 16,
-        fontSize: 18,
-        textAlign: "center",
-        fontWeight: "bold"
-    },
-    input: {
-        marginTop: 16,
-        fontSize: 16,
-        alignContent: "center",
-        height: 40,
-        margin: 30,
-        borderWidth: 1,
-        padding: 10,
-        borderRadius: 8,
+    country: {
+        fontSize: 14,
+        color: "#797979"
     }
 });
