@@ -10,6 +10,11 @@ import SeeLocationScreen from './screens/SeeLocationScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'VarelaRound-Regular': require('./assets/fonts/VarelaRound-Regular.ttf'),
+  });
+
   return (
     <>
       <StatusBar style="dark" />
