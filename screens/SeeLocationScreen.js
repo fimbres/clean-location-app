@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image,Touchable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import TargetTitle from '../components/TargetTitle'
 import GradientScroll from '../components/GradientScroll'
 import StarCalif from '../components/StarCalif'
@@ -16,21 +16,21 @@ return (
     <View style={styles.container}>
       <TargetTitle title={cityName} subtitle={countryName}></TargetTitle>
       <StarCalif valorEstrella={valorEstrella}></StarCalif>
-      <View style={{width:'100%'}}>
-        <Text style={styles.txtParams}>NO2</Text>
-        <GradientScroll/>
-        <Text style={styles.txtParams}>O3</Text>
-        <GradientScroll/>
-        <Text style={styles.txtParams}>CO</Text>
-        <GradientScroll/>
-        <Text style={styles.txtParams}>PM2.5</Text>
-        <GradientScroll/>
-        <Text style={styles.txtParams}>PM5</Text>
-        <GradientScroll/>
-        <Text style={styles.txtParams}>PM10</Text>
-        <GradientScroll/>
-      </View>
-    <CustomButton/>
+      <View style={{width:'100%', paddingVertical: 30, marginTop: 10}}>
+        <ScrollView contentContainerStyle={{paddingBottom: 20}}>
+          <Text style={styles.txtParams}>NO2</Text>
+          <GradientScroll/>
+          <Text style={styles.txtParams}>O3</Text>
+          <GradientScroll/>
+          <Text style={styles.txtParams}>CO</Text>
+          <GradientScroll/>
+          <Text style={styles.txtParams}>PM2.5</Text>
+          <GradientScroll/>
+          <Text style={styles.txtParams}>PM5</Text>
+          <GradientScroll/>
+        <CustomButton/>
+      </ScrollView>
+    </View>
     </View>
   </View>
 )
