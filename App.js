@@ -27,7 +27,6 @@ export default function App() {
           <Stack.Screen name="SearchLocation" component={SearchLocationScreen} />
           <Stack.Screen name="SeeLocation" component={SeeLocationScreen} />
           <Stack.Screen name="OptionsLocation" component={OptionsLocationScreen} />
-          <Stack.Screen name='LocationDetails' component={LocationDetails}/>
         </Stack.Navigator>
       </NavigationContainer>
     </>
