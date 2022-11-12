@@ -1,28 +1,44 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,LogBox } from "react-native";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 
 function BottomTab({ currentRouteName, navigationRef }) {
+  const [isInHome, setIsInHome] = useState(true)
+
+  LogBox.ignoreAllLogs(true)
+
+  console.log(currentRouteName);
   return (
     <>
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {
-            navigationRef.navigate("Home");
+            try {
+              navigationRef.navigate("Home");
+              setIsInHome(true);
+            } catch (error) {
+              console.log(error);
+            }
           }}
         >
-          <Entypo style={styles.icon} name="home" size={40} color="white" />
+          <Entypo
+            style={styles.icon}
+            name="home"
+            size={40}
+            color={isInHome ? "#31905D" : "white"}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             navigationRef.navigate("SearchLocation");
+            setIsInHome(false);
           }}
         >
           <FontAwesome
             style={styles.icon}
             name="search"
             size={40}
-            color="white"
+            color={!isInHome ? "#31905D" : "white"}
           />
         </TouchableOpacity>
       </View>
