@@ -13,7 +13,8 @@ const OptionsLocationScreen = ({ navigation }) => {
         ></TextInput>
         <OptionCity city="Ensenada" country="Mexico">
         </OptionCity>
-
+        <OptionCity city="Tijuana" country="Mexico">
+        </OptionCity>
     </View>
   )
 }
@@ -23,21 +24,25 @@ export default OptionsLocationScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#3E3939",
+        color: "#ffffff"
     },
     title: {
         marginTop: 16,
         fontSize: 18,
         textAlign: "center",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "#ffffff"
     },
     input: {
-        marginTop: 16,
-        fontSize: 16,
+        fontSize: 20,
         alignContent: "center",
-        height: 40,
         margin: 30,
+        padding: 15,
         borderWidth: 1,
-        padding: 10,
         borderRadius: 8,
+        backgroundColor: "#2C2727",
+        borderColor: "#31905D",
+        color: "#ffffff"
     }
 });
