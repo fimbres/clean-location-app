@@ -2,16 +2,18 @@ import React,{useState} from 'react';
 import { View, Text, StyleSheet, Touchable, TouchableOpacity } from 'react-native';
 import TargetTitle from '../components/TargetTitle'
 import GradientScroll from '../components/GradientScroll'
+import StarCalif from '../components/StarCalif'
 
-const CompareLocationsScreen = ({ navigation, route }) => {
-
+const CompareLocationsScreen = ({ navigation, route, valorEstrella}) => {
+  valorEstrella = 4;
   const [visible, setVisible ] = useState(false);
 
   return (
     <View style={{display:'flex',justifyContent:'flex-start', flex: 1, alignItems:'center', backgroundColor:'#3E3939'}}>
       <View style={styles.container}>
         <TargetTitle title={"Washington D.C"} subtitle={"united states"}></TargetTitle>
-        <TouchableOpacity onPress={() => setVisible(!visible)} style={{width:'100%'}}><Text style={styles.txtDetails}>VIEW DETAILS</Text></TouchableOpacity>
+        <StarCalif valorEstrella={valorEstrella}></StarCalif>
+        <TouchableOpacity onPress={() => setVisible(!visible)} style={{width:'100%',marginTop:30}}><Text style={styles.txtDetails}>VIEW DETAILS</Text></TouchableOpacity>
         {visible && <View style={{width:'100%'}}>
           <Text style={styles.txtParams}>CO2</Text>
           <GradientScroll/>
