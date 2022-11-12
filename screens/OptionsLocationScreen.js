@@ -6,7 +6,7 @@ import Travel from '../assets/travelers.png';
 const OptionsLocationScreen = ({ navigation }) => {
     const [focus, setFocus] = useState(false)
     const [text,onChangeText] = useState("");
-    const [options, setOptions] = useState(false);
+    const [options, setOptions] = useState([]);
     const styles_inpt = StyleSheet.create({
         input: {
             fontSize: 16,
@@ -27,7 +27,23 @@ const OptionsLocationScreen = ({ navigation }) => {
         .then((res) => res.json())
         .then( (res) => {
             if(res.results){
-                setOptions(res.results)
+                let opciones = []
+                res.results.map(direccion => {
+                        let filtro = true
+                        if(direccion.city.length <= 3)
+                            filtro  = false
+                        else if(!direccion.country)
+                            filtro = false
+                        else {
+                            opciones.map(op => {
+                                if(op.city == direccion.city && op.country == direccion.country)
+                                    filtro = false
+                            })
+                        }
+                        if(filtro)
+                            opciones.push(direccion)
+                })
+                setOptions(opciones)
             }
             else 
                 setOptions([])
@@ -50,7 +66,7 @@ const OptionsLocationScreen = ({ navigation }) => {
             placeholderTextColor='#999999'
         />
         {
-            text === "" || !options ?
+            text === "" || options.length == 0 ?
                 <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                     <Image style={styles.image} source={Travel} />
                 </View>
