@@ -51,7 +51,7 @@ export default function App() {
         }}
       >
         
-        <Stack.Navigator initialRouteName="Home" >
+        <Stack.Navigator initialRouteName="SeeLocation" >
           <Stack.Screen name="Home" component={HomeScreen} options={options}/>
           <Stack.Screen
             name="CompareLocations"
