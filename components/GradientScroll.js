@@ -14,7 +14,6 @@ const GradientScroll = ({ value }) => {
             value={value}
             minimumValue={0}
             maximumValue={1}
-            step={0.1}
             minimumTrackTintColor="transparent"
             maximumTrackTintColor="transparent"
             thumbTintColor={colors.grayThumb}

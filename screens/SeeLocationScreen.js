@@ -10,7 +10,15 @@ const SeeLocationScreen = (props) => {
   
   let cityName = props.route.params.city
   let countryName = props.route.params.country
-  let valorEstrella = 4;
+  
+  const valueCO2 = Math.random();
+  const valueO3 = Math.random();
+  const valueCO = Math.random();
+  const valuePM2 = Math.random();
+  const valuePM5 = Math.random();
+
+  const valorEstrella = Math.round(valueCO2 + valueO3 + valueCO + valuePM2 + valuePM5);
+
 return (
   <View style={{display:'flex',justifyContent:'flex-start', flex: 1, alignItems:'center', backgroundColor:'#3E3939'}}>
     <View style={styles.container}>
@@ -18,17 +26,17 @@ return (
       <StarCalif valorEstrella={valorEstrella}></StarCalif>
       <View style={{width:'100%', paddingVertical: 30, marginTop: 10}}>
         <ScrollView contentContainerStyle={{paddingBottom: 20}}>
-          <Text style={styles.txtParams}>NO2</Text>
-          <GradientScroll/>
+          <Text style={styles.txtParams}>CO2</Text>
+          <GradientScroll value={valueCO2}/>
           <Text style={styles.txtParams}>O3</Text>
-          <GradientScroll/>
+          <GradientScroll value={valueO3}/>
           <Text style={styles.txtParams}>CO</Text>
-          <GradientScroll/>
+          <GradientScroll value={valueCO}/>
           <Text style={styles.txtParams}>PM2.5</Text>
-          <GradientScroll/>
+          <GradientScroll value={valuePM2}/>
           <Text style={styles.txtParams}>PM5</Text>
-          <GradientScroll/>
-        <CustomButton/>
+          <GradientScroll value={valuePM5}/>
+        {/* <CustomButton onPress={() => props.navigation.push("SearchLocation", { cityName, countryName, valorEstrella })}/> */}
       </ScrollView>
     </View>
     </View>
