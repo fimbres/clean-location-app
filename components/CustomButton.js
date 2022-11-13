@@ -1,11 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-function CustomButton() {
+function CustomButton({onPress}) {
   return (
-    <View style={styles.container}>
-        <Text style={styles.customBtn}>Compare With Other Location</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+          <Text style={styles.customBtn}>Compare With Other Location</Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 

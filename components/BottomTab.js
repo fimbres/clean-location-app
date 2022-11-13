@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "nowrap",
     justifyContent: "space-around",
-    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 40,
     backgroundColor: "#2C2727",
   },
   icon: {
     backgroundColor: "#2C2727",
     width: 42,
-    paddingBottom:10,
   },
 });
